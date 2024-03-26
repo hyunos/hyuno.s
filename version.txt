@@ -1,1 +1,1 @@
-version = '1.0.4'
+var localVersion = '1.0.4';
