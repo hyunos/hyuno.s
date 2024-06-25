@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<!-- This page was created by Hyunho Shim. Please provide feedback via hyunho.shim@volvocars.com. -->
+<!-- Thank you to everyone who contributed to supporting knowledge data. -->
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" type="image/png" href="https://www.volvocars.com/static/shared/images/favicons/favicon-16x16.v2.svg">
+	<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://raw.githubusercontent.com/hyunos/hyuno.s/main/style.css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>KBase | Volvo Customer Care</title>
+	
+    <script src="https://raw.githubusercontent.com/hyunos/hyuno.s/main/script.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+</head>
+<body>
+<div class="content-header">
+    <div class="logo">
+        <img src="https://www.volvocars.com/static/shared/images/volvo-spread-wordmark.svg" alt="Volvo Logo">
+        <span style="font-family: 'volvo-broad', Nanum Gothic; font-size: 16pt;">KBase&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp; &nbsp;</span>
+        <a style="font-family: 'volvo-broad', Nanum Gothic; font-size: 16pt;"><p id="greeting"></p></a>
+    </div>
+    <div>
+        <select id="search-category" class="search-category"></select>
+        <input type="text" id="search-bar" class="search-bar" placeholder="문서 검색" onkeypress="handleKeyPress(event)">
+        <button class="search-button" onclick="searchDocuments()">검색</button>
+    </div>
+</div>
+<div class="container">
+
+    <div class="categories"></div>
+    <div id="category-list" style="width: 400px; margin-top: 20px;"></div>
+    <div class="content">
+	<div>
+	<a href="https://volvocarsapac.my.salesforce.com/?ec=302&startURL=%2Fhome%2Fhome.jsp" target="_blank" style="text-align: center;">
+	<button class="link-button"><span>Salesforce</span></button>
+	</a>
+	<a href="https://callcenterclient.eu.volvocars.biz/ccc/login" target="_blank" style="text-align: center;">
+	<button class="link-button"><span>CCC</span></button>
+	</a>
+	<a href="https://message.to-go.io/dashboards/dashboard-default" target="_blank" style="text-align: center;">
+	<button class="link-button"><span>메세지 전송 툴</span></button>
+	</a>
+	<a href="https://vckims.volvocars.kr/" target="_blank" style="text-align: center;">
+	<button class="link-button"><span>DMS</span></button>
+	</a>
+	<a href="https://clms.samsungfireservice.com/member/login.sfs" target="_blank" style="text-align: center;">
+	<button class="link-button"><span>RSA(CLMS)</span></button>
+	</a>
+	<a href="https://www.car.go.kr/home/main.do" target="_blank" style="text-align: center;">
+	<button class="link-button"><span>리콜 정보 조회</span></button>
+	</a>
+	<a href="https://www.volvocar.co.kr/buy/purchase/find-a-showroom/?type=service" target="_blank" style="text-align: center;">
+	<button class="link-button"><span>서비스센터 위치</span></button>
+	</a>
+	<a href="https://www.volvocar.co.kr/buy/purchase/find-a-showroom/?type=showroom" target="_blank" style="text-align: center;">
+	<button class="link-button"><span>전시장 위치</span></button>
+	</a>
+	<a href="http://speller.cs.pusan.ac.kr/?apppush" target="_blank" style="text-align: center;">
+	<button class="link-button"><span>맞춤법 검사</span></button>
+	</a>
+		</div>
+        <div id="selected-category">선택된 카테고리:</div>
+        <div id="document-list"></div>
+        <div id="pagination">
+            <button id="prev-page">이전</button>
+            <span id="page-numbers"></span>
+            <button id="next-page">다음</button>
+        </div>
+    </div>
+</div>
+
+<!-- 문서 상세 보기 모달 -->
+<div id="document-modal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h2 id="modal-title"></h2>
+        <p id="modal-category"></p> <!-- 카테고리와 날짜 추가 -->
+        <p id="modal-howto"></p> <!-- howto 추가 -->
+        <hr>
+        <div id="modal-content" class="modal-body"></div>
+    </div>
+</div>
+
+<div class="footer">
+    <p>Copyright © 2024 Volvo Car Corporation (또는 계열사 또는 라이센스 제공자)</p>
+    <p>Made by Hyunho Shim (hyunho.shim@volvocars.com)</p>
+</div>
+    </body>
+</html>
